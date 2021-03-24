@@ -44,18 +44,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
-            android:id="@+id/etUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:backgroundTint="#fff"
-            android:ems="10"
-            android:foregroundTint="#fff"
-            android:hint="Username"
-            android:inputType="textPersonName"
-            android:textColorHint="#B6B2B2" />
-
-        <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,18 +64,6 @@
             android:ems="10"
             android:foregroundTint="#fff"
             android:hint="Password"
-            android:inputType="textPersonName"
-            android:textColorHint="#B6B2B2" />
-
-        <EditText
-            android:id="@+id/etPassCom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="#fff"
-            android:ems="10"
-            android:foregroundTint="#fff"
-            android:hint="Confirm"
             android:inputType="textPersonName"
             android:textColorHint="#B6B2B2" />
 
