@@ -30,19 +30,20 @@
             android:layout_height="wrap_content"
             android:background="@drawable/btn_bg"
             android:padding="10dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
             android:text="Get Started"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:textColor="@color/white" />
 
         <ProgressBar
             android:id="@+id/loader"
             style="@style/Widget.AppCompat.ProgressBar"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_gravity="center"
-            android:outlineAmbientShadowColor="@color/black" />
+            android:outlineAmbientShadowColor="@color/black"
+            android:background="@color/gray"/>
 
     </FrameLayout>
 
