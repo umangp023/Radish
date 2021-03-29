@@ -35,14 +35,6 @@ class MainActivity5 : AppCompatActivity() {
         arrSubCategory.add(Recipies(4,"Lamb Chops Sizzled with Garlic"))
         arrSubCategory.add(Recipies(5,"Fried Avocado Tacos"))
 
-        subCategoryAdapter.setData(arrSubCategory)
-
-
-        rv_main_category.layoutManager = LinearLayoutManager(this)
-        rv_main_category.adapter = mainCategoryAdapter
-
-        rv_sub_category.layoutManager = LinearLayoutManager(this)
-        rv_sub_category.adapter = subCategoryAdapter
 
     }
 }
