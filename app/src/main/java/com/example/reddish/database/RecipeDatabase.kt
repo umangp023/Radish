@@ -1,14 +1,17 @@
-package com.example.reddish.database
+package com.codingwithme.recipeapp.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.reddish.dao.RecipeDao
-import com.example.reddish.entities.Recipies
+import com.codingwithme.recipeapp.dao.RecipeDao
+import com.example.reddish.entities.*
+import com.example.reddish.entities.converter.CategoryListConverter
+import com.example.reddish.entities.converter.MealListConverter
 
-@Database(entities = [Recipies::class],version = 1,exportSchema = false)
+@Database(entities = [Recipes::class, CategoryItems::class, Category::class, Meal::class, MealsItems::class],version = 1,exportSchema = false)
+@TypeConverters(CategoryListConverter::class, MealListConverter::class)
 abstract class RecipeDatabase: RoomDatabase() {
 
     companion object{
@@ -19,9 +22,9 @@ abstract class RecipeDatabase: RoomDatabase() {
         fun getDatabase(context: Context): RecipeDatabase{
             if (recipesDatabase == null){
                 recipesDatabase = Room.databaseBuilder(
-                    context,
-                    RecipeDatabase::class.java,
-                    "recipe.db"
+                        context,
+                        RecipeDatabase::class.java,
+                        "recipe.db"
                 ).build()
             }
             return recipesDatabase!!

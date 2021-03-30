@@ -1,40 +1,91 @@
 package com.example.reddish
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.reddish.adapter.MainCategoryAdapter
-import com.example.reddish.adapter.SubCategoryAdapter
-import com.example.reddish.entities.Recipies
+import com.codingwithme.recipeapp.adapter.MainCategoryAdapter
+import com.codingwithme.recipeapp.adapter.SubCategoryAdapter
+import com.codingwithme.recipeapp.database.RecipeDatabase
+import com.example.reddish.entities.CategoryItems
+import com.example.reddish.entities.MealsItems
+import com.example.reddish.entities.Recipes
+import kotlinx.android.synthetic.main.activity_main5.*
+import kotlinx.coroutines.launch
 
-class MainActivity5 : AppCompatActivity() {
+class MainActivity5 : MainActivity9() {
 
-    var arrMainCategory = ArrayList<Recipies>()
-    var arrSubCategory = ArrayList<Recipies>()
+    var arrMainCategory = ArrayList<CategoryItems>()
+    var arrSubCategory = ArrayList<MealsItems>()
 
     var mainCategoryAdapter = MainCategoryAdapter()
     var subCategoryAdapter = SubCategoryAdapter()
-
-    val rv_main_category = findViewById<RecyclerView>(R.id.rv_main_category)
-    val rv_sub_category = findViewById<RecyclerView>(R.id.rv_sub_category)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main5)
 
-        arrMainCategory.add(Recipies(1,"Beef"))
-        arrMainCategory.add(Recipies(2,"Chicken"))
-        arrMainCategory.add(Recipies(3,"Dessert"))
-        arrMainCategory.add(Recipies(4,"Lamb"))
-        arrMainCategory.add(Recipies(5,"Mexican"))
 
-        arrSubCategory.add(Recipies(1,"Beef Wellington"))
-        arrSubCategory.add(Recipies(2,"Chicken Alfredo"))
-        arrSubCategory.add(Recipies(3,"Lava Cake"))
-        arrSubCategory.add(Recipies(4,"Lamb Chops Sizzled with Garlic"))
-        arrSubCategory.add(Recipies(5,"Fried Avocado Tacos"))
+        getDataFromDb()
+
+        mainCategoryAdapter.setClickListener(onCLicked)
+        subCategoryAdapter.setClickListener(onCLickedSubItem)
 
 
+    }
+
+    private val onCLicked = object : MainCategoryAdapter.OnItemClickListener {
+        override fun onClicked(categoryName: String) {
+            getMealDataFromDb(categoryName)
+        }
+    }
+
+    private val onCLickedSubItem = object : SubCategoryAdapter.OnItemClickListener {
+        override fun onClicked(id: String) {
+            var intent = Intent(this@MainActivity5, MainActivity8::class.java)
+            intent.putExtra("id", id)
+            startActivity(intent)
+        }
+    }
+
+    private fun getDataFromDb() {
+        launch {
+            this.let {
+                var cat =
+                    RecipeDatabase.getDatabase(this@MainActivity5).recipeDao().getAllCategory()
+                arrMainCategory = cat as ArrayList<CategoryItems>
+                arrMainCategory.reverse()
+
+                getMealDataFromDb(arrMainCategory[0].strcategory)
+                mainCategoryAdapter.setData(arrMainCategory)
+                rv_main_category.layoutManager = LinearLayoutManager(
+                    this@MainActivity5,
+                    LinearLayoutManager.HORIZONTAL, false
+                )
+                rv_main_category.adapter = mainCategoryAdapter
+            }
+
+
+        }
+    }
+
+    private fun getMealDataFromDb(categoryName: String) {
+        tvCategory.text = "$categoryName Category"
+        launch {
+            this.let {
+                var cat = RecipeDatabase.getDatabase(this@MainActivity5).recipeDao()
+                    .getSpecificMealList(categoryName)
+                arrSubCategory = cat as ArrayList<MealsItems>
+                subCategoryAdapter.setData(arrSubCategory)
+                rv_sub_category.layoutManager = LinearLayoutManager(
+                    this@MainActivity5,
+                    LinearLayoutManager.HORIZONTAL, false
+                )
+                rv_sub_category.adapter = subCategoryAdapter
+            }
+
+
+        }
     }
 }

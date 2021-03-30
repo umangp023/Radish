@@ -11,11 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RedDish">
-        <activity android:name=".MainActivity7"></activity>
+        <activity android:name=".MainActivity9"></activity>
+        <activity android:name=".MainActivity8" />
+        <activity android:name=".MainActivity7" />
         <activity android:name=".MainActivity6" />
         <activity android:name=".MainActivity5" />
-        <activity android:name=".MainActivity4"
-            android:screenOrientation="locked"/>
+        <activity
+            android:name=".MainActivity4"
+            android:screenOrientation="locked" />
         <activity android:name=".MainActivity3" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".MainActivity">
@@ -24,7 +27,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity >
+        </activity>
     </application>
 
 </manifest>

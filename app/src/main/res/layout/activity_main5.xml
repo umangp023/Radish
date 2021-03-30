@@ -54,7 +54,7 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
                 tools:itemCount="1"
-                tools:listitem="@layout/activity_main6" />
+                tools:listitem="@layout/item_rv_main_category" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
                 tools:itemCount="1"
-                tools:listitem="@layout/activity_main7" />
+                tools:listitem="@layout/item_rv_sub_category" />
 
 
         </LinearLayout>
