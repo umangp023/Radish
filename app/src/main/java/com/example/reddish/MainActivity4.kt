@@ -2,41 +2,30 @@ package com.example.reddish
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Toast
-import com.codingwithme.recipeapp.database.RecipeDatabase
-import com.example.reddish.entities.Category
-import com.example.reddish.entities.Meal
-import com.example.reddish.entities.MealsItems
-import com.example.reddish.interfaces.GetDataService
-import com.example.reddish.retofitclient.RetrofitClientInstance
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main4.*
-import kotlinx.coroutines.launch
-import pub.devrel.easypermissions.AppSettingsDialog
-import pub.devrel.easypermissions.EasyPermissions
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class MainActivity4 : MainActivity9(), EasyPermissions.RationaleCallbacks,
-    EasyPermissions.PermissionCallbacks {
+class MainActivity4 : AppCompatActivity(){
+    //i removed mainactivity9() from the class definition/header thing
+    //i also removed , EasyPermissions.RationaleCallbacks,
+    //    EasyPermissions.PermissionCallbacks
     private var READ_STORAGE_PERM = 123
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main4)
 
-        readStorageTask()
-
+        //readStorageTask()
+        val btnGetStarted = findViewById<Button>(R.id.btnGetStarted)
         btnGetStarted.setOnClickListener {
             var intent = Intent(this@MainActivity4, MainActivity5::class.java)
             startActivity(intent)
-            finish()
+            //finish()
         }
     }
 
 
-    fun getCategories() {
+    /*fun getCategories() {
         val service = RetrofitClientInstance.retrofitInstance!!.create(GetDataService::class.java)
         val call = service.getCategoryList()
         call.enqueue(object : Callback<Category> {
@@ -178,5 +167,5 @@ class MainActivity4 : MainActivity9(), EasyPermissions.RationaleCallbacks,
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
 
-    }
+    }*/
 }

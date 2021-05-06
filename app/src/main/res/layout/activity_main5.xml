@@ -28,12 +28,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="10dp"
-                android:layout_marginLeft="10dp">
-
+                app:cardElevation="10dp">
 
                 <SearchView
                     android:id="@+id/search_view"
@@ -43,7 +42,9 @@
                     android:iconifiedByDefault="false"
                     android:queryBackground="@color/transparent"
                     android:queryHint="Search for recipes"
-                    android:theme="@style/ThemeOverlay.Search" />
+                    android:theme="@style/ThemeOverlay.Search">
+
+                </SearchView>
 
             </androidx.cardview.widget.CardView>
 
@@ -74,7 +75,16 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
                 tools:itemCount="1"
-                tools:listitem="@layout/item_rv_sub_category" />
+                tools:listitem="@layout/item_rv_sub_category" >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/share_text_1_btn"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:text="Share" />
 
 
         </LinearLayout>

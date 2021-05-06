@@ -64,7 +64,7 @@
             android:ems="10"
             android:foregroundTint="#fff"
             android:hint="Password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:textColorHint="#B6B2B2" />
 
         <Button
@@ -73,7 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:background="@drawable/button"
-            android:text="Register" />
+            android:text="Register"
+            android:onClick="register"/>
 
     </LinearLayout>
 

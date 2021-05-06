@@ -1,16 +1,13 @@
 package com.example.reddish
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.codingwithme.recipeapp.adapter.MainCategoryAdapter
 import com.codingwithme.recipeapp.adapter.SubCategoryAdapter
 import com.codingwithme.recipeapp.database.RecipeDatabase
 import com.example.reddish.entities.CategoryItems
 import com.example.reddish.entities.MealsItems
-import com.example.reddish.entities.Recipes
 import kotlinx.android.synthetic.main.activity_main5.*
 import kotlinx.coroutines.launch
 
@@ -22,18 +19,24 @@ class MainActivity5 : MainActivity9() {
     var mainCategoryAdapter = MainCategoryAdapter()
     var subCategoryAdapter = SubCategoryAdapter()
 
+  //  val search_view = findViewById<SearchView>(R.id.search_view)
+  //  var search = SearchRecipe()
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main5)
 
+        //getDataFromDb()
 
-        getDataFromDb()
-
-        mainCategoryAdapter.setClickListener(onCLicked)
-        subCategoryAdapter.setClickListener(onCLickedSubItem)
+        //mainCategoryAdapter.setClickListener(onCLicked)
+        //subCategoryAdapter.setClickListener(onCLickedSubItem)
 
 
     }
+
 
     private val onCLicked = object : MainCategoryAdapter.OnItemClickListener {
         override fun onClicked(categoryName: String) {
