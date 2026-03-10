@@ -19,3 +19,34 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Retrofit
+-keepattributes Signature, InnerClasses, EnclosingMethod
+-keepattributes RuntimeVisibleAnnotations, RuntimeVisibleParameterAnnotations
+-keepclassmembers,allowshrinking,allowobfuscation interface * {
+    @retrofit2.http.* <methods>;
+}
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+-dontwarn javax.annotation.**
+-dontwarn kotlin.Unit
+-dontwarn retrofit2.KotlinExtensions
+-dontwarn retrofit2.KotlinExtensions$*
+
+# OkHttp
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+# Glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep class * extends com.bumptech.glide.module.AppGlideModule {
+    <init>(...);
+}
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+    **[] $VALUES;
+    public *;
+}
+
+# Room
+-keep class * extends androidx.room.RoomDatabase
+-keep @androidx.room.Entity class *
+-dontwarn androidx.room.paging.**

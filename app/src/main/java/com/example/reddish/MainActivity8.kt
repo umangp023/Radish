@@ -3,33 +3,35 @@ package com.example.reddish
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.reddish.databinding.ActivityDetailBinding
 import com.example.reddish.entities.MealResponse
 import com.example.reddish.interfaces.GetDataService
 import com.example.reddish.retofitclient.RetrofitClientInstance
-import kotlinx.android.synthetic.main.activity_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity8 : MainActivity9() {
 
+    private lateinit var binding: ActivityDetailBinding
     var youtubeLink = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         var id = intent.getStringExtra("id")
 
         getSpecificItem(id!!)
 
-        imgToolbarBtnBack.setOnClickListener {
+        binding.imgToolbarBtnBack.setOnClickListener {
             finish()
         }
 
-        btnYoutube.setOnClickListener {
+        binding.btnYoutube.setOnClickListener {
             val uri = Uri.parse(youtubeLink)
             val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
@@ -53,9 +55,9 @@ class MainActivity8 : MainActivity9() {
             ) {
 
                 Glide.with(this@MainActivity8).load(response.body()!!.mealsEntity[0].strmealthumb)
-                    .into(imgItem)
+                    .into(binding.imgItem)
 
-                tvCategory.text = response.body()!!.mealsEntity[0].strmeal
+                binding.tvCategory.text = response.body()!!.mealsEntity[0].strmeal
 
                 var ingredient =
                     "${response.body()!!.mealsEntity[0].stringredient1}      ${response.body()!!.mealsEntity[0].strmeasure1}\n" +
@@ -79,8 +81,8 @@ class MainActivity8 : MainActivity9() {
                             "${response.body()!!.mealsEntity[0].stringredient19}      ${response.body()!!.mealsEntity[0].strmeasure19}\n" +
                             "${response.body()!!.mealsEntity[0].stringredient20}      ${response.body()!!.mealsEntity[0].strmeasure20}\n"
 
-                tvIngredients.text = ingredient
-                tvInstructions.text = response.body()!!.mealsEntity[0].strinstructions
+                binding.tvIngredients.text = ingredient
+                binding.tvInstructions.text = response.body()!!.mealsEntity[0].strinstructions
 
                 youtubeLink = response.body()!!.mealsEntity[0].strsource
             }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main4.*
 
 class MainActivity4 : AppCompatActivity(){
     //i removed mainactivity9() from the class definition/header thing

@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.codingwithme.recipeapp.adapter.MainCategoryAdapter
 import com.codingwithme.recipeapp.adapter.SubCategoryAdapter
 import com.codingwithme.recipeapp.database.RecipeDatabase
+import com.example.reddish.databinding.ActivityMain5Binding
 import com.example.reddish.entities.CategoryItems
 import com.example.reddish.entities.MealsItems
-import kotlinx.android.synthetic.main.activity_main5.*
 import kotlinx.coroutines.launch
 
 class MainActivity5 : MainActivity9() {
+
+    private lateinit var binding: ActivityMain5Binding
 
     var arrMainCategory = ArrayList<CategoryItems>()
     var arrSubCategory = ArrayList<MealsItems>()
@@ -27,7 +29,8 @@ class MainActivity5 : MainActivity9() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main5)
+        binding = ActivityMain5Binding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         //getDataFromDb()
 
@@ -62,11 +65,11 @@ class MainActivity5 : MainActivity9() {
 
                 getMealDataFromDb(arrMainCategory[0].strcategory)
                 mainCategoryAdapter.setData(arrMainCategory)
-                rv_main_category.layoutManager = LinearLayoutManager(
+                binding.rvMainCategory.layoutManager = LinearLayoutManager(
                     this@MainActivity5,
                     LinearLayoutManager.HORIZONTAL, false
                 )
-                rv_main_category.adapter = mainCategoryAdapter
+                binding.rvMainCategory.adapter = mainCategoryAdapter
             }
 
 
@@ -74,18 +77,18 @@ class MainActivity5 : MainActivity9() {
     }
 
     private fun getMealDataFromDb(categoryName: String) {
-        tvCategory.text = "$categoryName Category"
+        binding.tvCategory.text = "$categoryName Category"
         launch {
             this.let {
                 var cat = RecipeDatabase.getDatabase(this@MainActivity5).recipeDao()
                     .getSpecificMealList(categoryName)
                 arrSubCategory = cat as ArrayList<MealsItems>
                 subCategoryAdapter.setData(arrSubCategory)
-                rv_sub_category.layoutManager = LinearLayoutManager(
+                binding.rvSubCategory.layoutManager = LinearLayoutManager(
                     this@MainActivity5,
                     LinearLayoutManager.HORIZONTAL, false
                 )
-                rv_sub_category.adapter = subCategoryAdapter
+                binding.rvSubCategory.adapter = subCategoryAdapter
             }
 
 
