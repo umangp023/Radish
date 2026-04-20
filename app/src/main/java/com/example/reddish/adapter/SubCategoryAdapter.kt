@@ -15,7 +15,7 @@ class SubCategoryAdapter: RecyclerView.Adapter<SubCategoryAdapter.RecipeViewHold
     class RecipeViewHolder(val binding: ItemRvSubCategoryBinding): RecyclerView.ViewHolder(binding.root)
 
     fun setData(arrData : List<MealsItems>){
-        arrSubCategory = arrData as ArrayList<MealsItems>
+        arrSubCategory = ArrayList(arrData)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {

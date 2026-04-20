@@ -19,7 +19,7 @@ class SearchRecipe: Thread() {
         var client = OkHttpClient()
         var requester = client.newCall(request)
         var response = requester.execute()
-        var body = response.body()
+        var body = response.body
 
         //not sure if i want this return
 

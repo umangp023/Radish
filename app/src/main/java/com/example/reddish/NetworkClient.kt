@@ -37,7 +37,7 @@ class NetworkClient: Thread() {
         try{
             val response = requester.execute()
 
-            val body = response.body()
+            val body = response.body
             println("------body------")
             println(body)
             println("-----------------")
@@ -74,7 +74,7 @@ class NetworkClient: Thread() {
         try{
             val response = requester.execute()
 
-            val body = response.body()
+            val body = response.body
             println("------body------")
             println(body)
             println("-----------------")
@@ -107,7 +107,7 @@ class NetworkClient: Thread() {
         //modified this to a post
         val request = Request.Builder().url(url).post(formBody).build()
         val response = OkHttpClient().newCall(request).execute()
-        val body = response.body()
+        val body = response.body
 
         //modify this so it only works if username/password combo is right
         permPassword = pword
@@ -130,7 +130,7 @@ class NetworkClient: Thread() {
         //modified this to a post
         val request = Request.Builder().url(url).post(formBody).build()
         val response = OkHttpClient().newCall(request).execute()
-        val body = response.body()
+        val body = response.body
 
         //not sure if i want this return
         return body!!.byteStream()
@@ -149,7 +149,7 @@ class NetworkClient: Thread() {
         //modified this to a post
         val request = Request.Builder().url(url).post(formBody).build()
         val response = OkHttpClient().newCall(request).execute()
-        val body = response.body()
+        val body = response.body
 
         return body!!.byteStream()
 
@@ -165,7 +165,7 @@ class NetworkClient: Thread() {
         //modified this to a post
         val request = Request.Builder().url(url).post(formBody).build()
         val response = OkHttpClient().newCall(request).execute()
-        val body = response.body()
+        val body = response.body
 
         return body!!.byteStream()
 
@@ -182,7 +182,7 @@ class NetworkClient: Thread() {
         //modified this to a delete
         val request = Request.Builder().url(url).delete(formBody).build()
         val response = OkHttpClient().newCall(request).execute()
-        val body = response.body()
+        val body = response.body
 
         return body!!.byteStream()
 

@@ -32,10 +32,9 @@ class MainActivity5 : MainActivity9() {
         binding = ActivityMain5Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //getDataFromDb()
-
-        //mainCategoryAdapter.setClickListener(onCLicked)
-        //subCategoryAdapter.setClickListener(onCLickedSubItem)
+        getDataFromDb()
+        mainCategoryAdapter.setClickListener(onCLicked)
+        subCategoryAdapter.setClickListener(onCLickedSubItem)
 
 
     }
@@ -60,8 +59,11 @@ class MainActivity5 : MainActivity9() {
             this.let {
                 var cat =
                     RecipeDatabase.getDatabase(this@MainActivity5).recipeDao().getAllCategory()
-                arrMainCategory = cat as ArrayList<CategoryItems>
+                arrMainCategory = ArrayList(cat)
                 arrMainCategory.reverse()
+                if (arrMainCategory.isEmpty()) {
+                    return@let
+                }
 
                 getMealDataFromDb(arrMainCategory[0].strcategory)
                 mainCategoryAdapter.setData(arrMainCategory)
@@ -82,7 +84,7 @@ class MainActivity5 : MainActivity9() {
             this.let {
                 var cat = RecipeDatabase.getDatabase(this@MainActivity5).recipeDao()
                     .getSpecificMealList(categoryName)
-                arrSubCategory = cat as ArrayList<MealsItems>
+                arrSubCategory = ArrayList(cat)
                 subCategoryAdapter.setData(arrSubCategory)
                 binding.rvSubCategory.layoutManager = LinearLayoutManager(
                     this@MainActivity5,

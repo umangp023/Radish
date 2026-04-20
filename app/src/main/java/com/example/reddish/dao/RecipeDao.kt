@@ -14,10 +14,10 @@ interface RecipeDao {
     suspend fun getAllCategory() : List<CategoryItems>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertCategory(categoryItems: CategoryItems?)
+    suspend fun insertCategory(categoryItems: CategoryItems)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMeal(mealsItems: MealsItems?)
+    suspend fun insertMeal(mealsItems: MealsItems)
 
     @Query("DELETE FROM categoryitems")
     suspend fun clearDb()

@@ -26,7 +26,7 @@ class TestAPI:Thread() {
 
         val response = requester.execute()
 
-        val body = response.body()
+        val body = response.body
         println("------body------")
         println(body)
         println("-----------------")

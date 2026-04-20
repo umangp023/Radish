@@ -15,7 +15,7 @@ class MainCategoryAdapter: RecyclerView.Adapter<MainCategoryAdapter.RecipeViewHo
     class RecipeViewHolder(val binding: ItemRvMainCategoryBinding): RecyclerView.ViewHolder(binding.root)
 
     fun setData(arrData : List<CategoryItems>){
-        arrMainCategory = arrData as ArrayList<CategoryItems>
+        arrMainCategory = ArrayList(arrData)
     }
 
     fun setClickListener(listener1: OnItemClickListener){

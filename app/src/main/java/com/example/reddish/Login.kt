@@ -35,12 +35,12 @@ class Login:Thread() {
         //modified this to a post
         val request = Request.Builder().url(url).post(formBody).build()
         //var response = OkHttpClient().newCall(request).execute()
-        //var body = response.body()
+        //var body = response.body
 
         var client = OkHttpClient()
         var requester = client.newCall(request)
         var response = requester.execute()
-        var body = response.body()
+        var body = response.body
         //if body contains success go to next page?
 
         println("------body------")

@@ -45,7 +45,7 @@ class CreateAccount:Thread() {
         var response = requester.execute()
 
 
-        var body = response.body()
+        var body = response.body
         println("------body------")
         println(body)
         println("-----------------")
